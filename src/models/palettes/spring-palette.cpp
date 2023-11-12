@@ -1,8 +1,11 @@
 #include "../palette.h"
 #include "../../helpers/hex-to-rgb.h"
 
-class SpringPalette : Palette
+class SpringPalette : public Palette
 {
+public:
+    HexToRgb hexToRgb;
+
     int *pinkRgb;
     int *yellowRgb;
     int *greenRgb;
@@ -19,13 +22,16 @@ class SpringPalette : Palette
         PURPLE = 0xE4C1F9,
     };
 
+    SpringPalette() {}
+    // SpringPalette &operator=(const Palette &other) override;
+
     void Run()
     {
-        pinkRgb = ConvertHexToRGBArray(SpringPaletteEnum::PINK);
-        yellowRgb = ConvertHexToRGBArray(SpringPaletteEnum::YELLOW);
-        greenRgb = ConvertHexToRGBArray(SpringPaletteEnum::GREEN);
-        blueRgb = ConvertHexToRGBArray(SpringPaletteEnum::BLUE);
-        purpleRgb = ConvertHexToRGBArray(SpringPaletteEnum::PURPLE);
+        pinkRgb = hexToRgb.ConvertHexToRGBArray(SpringPaletteEnum::PINK);
+        yellowRgb = hexToRgb.ConvertHexToRGBArray(SpringPaletteEnum::YELLOW);
+        greenRgb = hexToRgb.ConvertHexToRGBArray(SpringPaletteEnum::GREEN);
+        blueRgb = hexToRgb.ConvertHexToRGBArray(SpringPaletteEnum::BLUE);
+        purpleRgb = hexToRgb.ConvertHexToRGBArray(SpringPaletteEnum::PURPLE);
 
         return;
     }

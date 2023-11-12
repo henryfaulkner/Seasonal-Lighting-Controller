@@ -1,8 +1,10 @@
 #include "palette-factory.h"
 #include "RTClib.h"
+#include "./palettes/spring-palette.cpp"
+#include "./palettes/fall-palette.cpp"
 
 RTC_DS1307 RTC;
-Palette defaultPalette;
+Palette palette;
 
 PaletteFactory::PaletteFactory() {}
 
@@ -12,12 +14,16 @@ Palette PaletteFactory::ConstructSeasonalPalette()
 
     if (IsSpring(now))
     {
+        SpringPalette springPalette;
+        palette = springPalette;
     }
     else if (IsFall(now))
     {
+        FallPalette fallPalette;
+        palette = fallPalette;
     }
 
-    return defaultPalette;
+    return palette;
 }
 
 bool PaletteFactory::IsSpring(DateTime datetime)
