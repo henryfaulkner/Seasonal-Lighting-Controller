@@ -6,9 +6,8 @@
 class Palette
 {
 public:
-    virtual ~Palette() = default;
-    // virtual Palette &operator=(const Palette &other);
     void Run();
+    const char *CheckPalette();
 };
 
-#endif PALETTE_H
+#endif // PALETTE_H

@@ -4,27 +4,7 @@
 class HexToRgb
 {
 public:
-    int hexCharToDecimal(char c)
-    {
-        if (c >= '0' && c <= '9')
-        {
-            return c - '0';
-        }
-        else if (c >= 'A' && c <= 'F')
-        {
-            return 10 + c - 'A';
-        }
-        else if (c >= 'a' && c <= 'f')
-        {
-            return 10 + c - 'a';
-        }
-        else
-        {
-            return -1;
-        }
-    }
-
-    int *ConvertHexToRGBArray(unsigned int hexValue)
+    int *ConvertHexToRGBArray(unsigned long hexValue)
     {
         // Extract individual components (R, G, B) from the hex value
         int r = (hexValue >> 16) & 0xFF;
@@ -38,4 +18,4 @@ public:
     }
 };
 
-#endif HEX_TO_RGB_H
+#endif // HEX_TO_RGB_H
