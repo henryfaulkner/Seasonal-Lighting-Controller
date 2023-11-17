@@ -6,6 +6,7 @@
 class ChristmasPalette : public Palette
 {
 public:
+    int **paletteList;
     HexToRgb hexToRgb;
     int *deepRedRgb;
     int *dullRedRgb;

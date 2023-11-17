@@ -6,6 +6,7 @@
 class SpringPalette : public Palette
 {
 public:
+    int **paletteList;
     HexToRgb hexToRgb;
     int *pinkRgb;
     int *yellowRgb;

@@ -6,6 +6,7 @@
 class FallPalette : public Palette
 {
 public:
+    int **paletteList;
     HexToRgb hexToRgb;
     int *deepRedRgb;
     int *yellowRgb;

@@ -6,8 +6,11 @@
 class Palette
 {
 public:
+    Palette();
+    int **paletteList;
     void Run();
     const char *CheckPalette();
+    ~Palette();
 };
 
 #endif // PALETTE_H

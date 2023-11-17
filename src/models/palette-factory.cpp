@@ -4,32 +4,47 @@
 #include "./palettes/spring-palette.h"
 #include "./palettes/fall-palette.h"
 #include "./palettes/christmas-palette.h"
+#include <Arduino.h>
 
-RTC_DS1307 RTC;
-Palette palette;
+RTC_DS3231 RTC;
 DateHelper dateHelper;
 
 PaletteFactory::PaletteFactory() {}
 
 Palette PaletteFactory::ConstructSeasonalPalette()
 {
-    DateTime now = RTC.now();
+    if (!RTC.begin())
+    {
+        Serial.println("Couldn't find RTC");
+        while (1)
+            ;
+    }
 
-    if (IsSpring(now))
+    if (RTC.lostPower())
     {
-        SpringPalette springPalette;
-        palette = springPalette;
+        Serial.println("RTC lost power, let's set the time!");
+        RTC.adjust(DateTime(F(__DATE__), F(__TIME__)));
     }
-    else if (IsFall(now))
-    {
-        FallPalette fallPalette;
-        palette = fallPalette;
-    }
-    else if (IsChristmas(now))
-    {
-        ChristmasPalette christmasPalette;
-        palette = christmasPalette;
-    }
+
+    Palette palette;
+    DateTime now = RTC.now();
+    // Serial.println("month");
+
+    // if (IsSpring(now))
+    // {
+    //     SpringPalette springPalette;
+    //     palette = springPalette;
+    // }
+    // else if (IsFall(now))
+    // {
+    //     FallPalette fallPalette;
+    //     palette = fallPalette;
+    // }
+    // else if (IsChristmas(now))
+    // {
+    //     ChristmasPalette christmasPalette;
+    //     palette = christmasPalette;
+    // }
 
     return palette;
 }
