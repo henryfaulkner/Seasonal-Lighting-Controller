@@ -26,27 +26,36 @@ Palette PaletteFactory::ConstructSeasonalPalette()
         RTC.adjust(DateTime(F(__DATE__), F(__TIME__)));
     }
 
-    Palette palette;
     DateTime now = RTC.now();
-    // Serial.println("month");
+    Serial.println("month");
+    Serial.println(now.month());
+    Serial.println("day");
+    Serial.println(now.day());
 
-    // if (IsSpring(now))
-    // {
-    //     SpringPalette springPalette;
-    //     palette = springPalette;
-    // }
-    // else if (IsFall(now))
-    // {
-    //     FallPalette fallPalette;
-    //     palette = fallPalette;
-    // }
-    // else if (IsChristmas(now))
-    // {
-    //     ChristmasPalette christmasPalette;
-    //     palette = christmasPalette;
-    // }
+    if (IsSpring(now))
+    {
+        Serial.println("IsSpring");
+        SpringPalette springPalette;
+        springPalette.CheckPalette();
+        return springPalette;
+    }
+    else if (IsFall(now))
+    {
+        Serial.println("IsFall");
+        FallPalette fallPalette;
+        fallPalette.CheckPalette();
+        return fallPalette;
+    }
+    else if (IsChristmas(now))
+    {
+        Serial.println("IsChristmas");
+        ChristmasPalette christmasPalette;
+        christmasPalette.CheckPalette();
+        return christmasPalette;
+    }
 
-    return palette;
+    Palette defaultPalette;
+    return defaultPalette;
 }
 
 bool PaletteFactory::IsSpring(DateTime datetime)
@@ -74,4 +83,8 @@ bool PaletteFactory::IsChristmas(DateTime datetime)
     int endMonth = 3; // March
     int endDay = 19;
     return dateHelper.ContainsDates(datetime, startMonth, startDay, endMonth, endDay);
+}
+
+PaletteFactory::~PaletteFactory()
+{
 }

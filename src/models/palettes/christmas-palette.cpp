@@ -1,9 +1,8 @@
 #include "./christmas-palette.h"
 #include "../../helpers/hex-to-rgb.h"
+#include <Arduino.h>
 
-ChristmasPalette::ChristmasPalette() {}
-
-void ChristmasPalette::Run()
+ChristmasPalette::ChristmasPalette()
 {
     // https://coolors.co/palette/bb010b-cd1624-006f57-23856d-faf8f8
     deepRedRgb = hexToRgb.ConvertHexToRGBArray(0xBB010B);
@@ -17,6 +16,7 @@ void ChristmasPalette::Run()
 
 const char *ChristmasPalette::CheckPalette()
 {
+    Serial.println("Christmas Palette");
     return "Christmas";
 }
 
@@ -27,4 +27,5 @@ ChristmasPalette::~ChristmasPalette()
     delete (deepGreenRgb);
     delete (dullGreenRgb);
     delete (snowWhiteRgb);
+    delete[] paletteList;
 }

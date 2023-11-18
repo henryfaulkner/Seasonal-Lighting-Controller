@@ -17,6 +17,7 @@ public:
     bool IsSaintPatricksDay(DateTime now);
     bool IsHalloween(DateTime now);
     bool IsRasta(DateTime now);
+    ~PaletteFactory();
 };
 
 #endif // PALETTE_FACTORY_H

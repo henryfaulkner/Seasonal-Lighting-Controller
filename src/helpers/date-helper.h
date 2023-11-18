@@ -8,7 +8,13 @@ class DateHelper
 public:
     bool ContainsDates(DateTime datetime, int startMonth, int startDay, int endMonth, int endDay)
     {
-        return datetime.month() >= startMonth && datetime.day() >= startDay && datetime.month() < endMonth && datetime.day() < endDay;
+        int currentMonth = datetime.month();
+        int currentDay = datetime.day();
+        if (currentMonth > startMonth && datetime.month() < endMonth)
+            return true;
+        if (currentMonth == startMonth && currentDay >= startDay && currentDay < endDay)
+            return true;
+        return false;
     }
 };
 

@@ -15,6 +15,8 @@ void setup()
   Serial.begin(9600);
   PaletteFactory pf;
   currentPalette = pf.ConstructSeasonalPalette();
+  Serial.println('breakpoint 18');
+  currentPalette.CheckPalette();
 
   // initialize pixel array's palette list index
   pixelIndexArr = new int[LED_COUNT];
@@ -30,8 +32,6 @@ void setup()
 
 void loop()
 {
-  Serial.println(currentPalette.CheckPalette());
-
   int len = sizeof(currentPalette.paletteList);
   for (int i = 0; i < LED_COUNT; i++)
   {

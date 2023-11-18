@@ -1,9 +1,8 @@
 #include "./spring-palette.h"
 #include "../../helpers/hex-to-rgb.h"
+#include <Arduino.h>
 
-SpringPalette::SpringPalette() {}
-
-void SpringPalette::Run()
+SpringPalette::SpringPalette()
 {
     // https://coolors.co/palette/ff99c8-fcf6bd-d0f4de-a9def9-e4c1f9
     pinkRgb = hexToRgb.ConvertHexToRGBArray(0xFF99C8);
@@ -17,6 +16,7 @@ void SpringPalette::Run()
 
 const char *SpringPalette::CheckPalette()
 {
+    Serial.println("Spring Palette");
     return "Spring";
 }
 
@@ -27,4 +27,5 @@ SpringPalette::~SpringPalette()
     delete (greenRgb);
     delete (blueRgb);
     delete (purpleRgb);
+    delete[] paletteList;
 }

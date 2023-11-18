@@ -15,8 +15,7 @@ public:
     int *deepOrangeRgb;
 
     FallPalette();
-    void Run();
-    const char *CheckPalette();
+    const char *CheckPalette() override;
     ~FallPalette();
 };
 

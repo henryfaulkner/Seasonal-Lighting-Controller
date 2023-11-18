@@ -8,8 +8,7 @@ class Palette
 public:
     Palette();
     int **paletteList;
-    void Run();
-    const char *CheckPalette();
+    virtual const char *CheckPalette();
     ~Palette();
 };
 

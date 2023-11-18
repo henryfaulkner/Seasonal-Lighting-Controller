@@ -1,4 +1,5 @@
 #include "./palette.h"
+#include <Arduino.h>
 
 Palette::Palette()
 {
@@ -11,12 +12,9 @@ Palette::Palette()
     return;
 }
 
-void Palette::Run()
-{
-}
-
 const char *Palette::CheckPalette()
 {
+    Serial.println("Default Palette");
     return "default";
 }
 
