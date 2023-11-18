@@ -27,5 +27,9 @@ ChristmasPalette::~ChristmasPalette()
     delete (deepGreenRgb);
     delete (dullGreenRgb);
     delete (snowWhiteRgb);
+    for (int i = 0; i < sizeof(paletteList); ++i)
+    {
+        delete[] paletteList[i];
+    }
     delete[] paletteList;
 }

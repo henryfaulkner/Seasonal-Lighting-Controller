@@ -20,8 +20,7 @@ const char *Palette::CheckPalette()
 
 Palette::~Palette()
 {
-    // Don't forget to free the allocated memory
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < sizeof(paletteList); ++i)
     {
         delete[] paletteList[i];
     }

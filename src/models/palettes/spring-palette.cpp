@@ -27,5 +27,9 @@ SpringPalette::~SpringPalette()
     delete (greenRgb);
     delete (blueRgb);
     delete (purpleRgb);
+    for (int i = 0; i < sizeof(paletteList); ++i)
+    {
+        delete[] paletteList[i];
+    }
     delete[] paletteList;
 }

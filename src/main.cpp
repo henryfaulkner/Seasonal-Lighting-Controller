@@ -15,7 +15,6 @@ void setup()
   Serial.begin(9600);
   PaletteFactory pf;
   currentPalette = pf.ConstructSeasonalPalette();
-  Serial.println('breakpoint 18');
   currentPalette.CheckPalette();
 
   // initialize pixel array's palette list index
