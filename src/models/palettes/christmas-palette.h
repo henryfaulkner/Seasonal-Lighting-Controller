@@ -15,6 +15,7 @@ public:
     int *snowWhiteRgb;
 
     ChristmasPalette();
+    int **GetPaletteList() override;
     const char *CheckPalette() override;
     ~ChristmasPalette();
 };

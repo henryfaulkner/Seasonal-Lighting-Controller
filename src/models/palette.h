@@ -8,6 +8,7 @@ class Palette
 public:
     Palette();
     int **paletteList;
+    virtual int **GetPaletteList();
     virtual const char *CheckPalette();
     ~Palette();
 };

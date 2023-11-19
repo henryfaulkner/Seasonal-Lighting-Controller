@@ -15,6 +15,7 @@ public:
     int *purpleRgb;
 
     SpringPalette();
+    int **GetPaletteList() override;
     const char *CheckPalette() override;
     ~SpringPalette();
 };

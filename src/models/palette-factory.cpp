@@ -11,7 +11,7 @@ DateHelper dateHelper;
 
 PaletteFactory::PaletteFactory() {}
 
-Palette PaletteFactory::ConstructSeasonalPalette()
+Palette *PaletteFactory::ConstructSeasonalPalette()
 {
     if (!RTC.begin())
     {
@@ -32,30 +32,30 @@ Palette PaletteFactory::ConstructSeasonalPalette()
     Serial.println("day");
     Serial.println(now.day());
 
+    Palette *result = nullptr;
     if (IsSpring(now))
     {
         Serial.println("IsSpring");
-        SpringPalette springPalette;
-        springPalette.CheckPalette();
-        return springPalette;
+        result = new SpringPalette();
     }
     else if (IsFall(now))
     {
         Serial.println("IsFall");
-        FallPalette fallPalette;
-        fallPalette.CheckPalette();
-        return fallPalette;
+        result = new FallPalette();
     }
     else if (IsChristmas(now))
     {
         Serial.println("IsChristmas");
-        ChristmasPalette christmasPalette;
-        christmasPalette.CheckPalette();
-        return christmasPalette;
+        result = new ChristmasPalette();
+    }
+    else
+    {
+        Serial.println("IsDefault");
+        result = new Palette();
     }
 
-    Palette defaultPalette;
-    return defaultPalette;
+    result->CheckPalette();
+    return result;
 }
 
 bool PaletteFactory::IsSpring(DateTime datetime)
