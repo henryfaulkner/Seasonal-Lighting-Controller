@@ -16,6 +16,7 @@ public:
 
     FallPalette();
     int **GetPaletteList() override;
+    int GetPaletteListLength() override;
     const char *CheckPalette() override;
     ~FallPalette();
 };

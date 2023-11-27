@@ -19,11 +19,30 @@ int **Palette::GetPaletteList()
     return paletteList;
 }
 
+int Palette::GetPaletteListLength() {
+    return 5;
+}
+
 const char *Palette::CheckPalette()
 {
     Serial.println("Default Palette");
     return "default";
 }
+
+// void Palette::CheckPaletteListRgb()
+// {
+//     int len = sizeof(paletteList);
+//     for (int i = 0; i < len; i++)
+//     {
+//         Serial.print("Rgb(");
+//         Serial.print(paletteList[i][0]);
+//         Serial.print(", ");
+//         Serial.print(paletteList[i][1]);
+//         Serial.print(", ");
+//         Serial.print(paletteList[i][2]);
+//         Serial.println(")");
+//     }
+// }
 
 Palette::~Palette()
 {

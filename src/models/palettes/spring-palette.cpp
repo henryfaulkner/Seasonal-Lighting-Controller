@@ -11,7 +11,7 @@ SpringPalette::SpringPalette()
     greenRgb = hexToRgb.ConvertHexToRGBArray(0xD0F4DE);
     blueRgb = hexToRgb.ConvertHexToRGBArray(0xA9DEF9);
     purpleRgb = hexToRgb.ConvertHexToRGBArray(0xE4C1F9);
-    paletteList = new int *[5];
+    paletteList = new int *[GetPaletteListLength()];
     paletteList[0] = pinkRgb;
     paletteList[1] = yellowRgb;
     paletteList[2] = greenRgb;
@@ -24,6 +24,11 @@ SpringPalette::SpringPalette()
 int **SpringPalette::GetPaletteList()
 {
     return paletteList;
+}
+
+int SpringPalette::GetPaletteListLength()
+{
+    return 5;
 }
 
 const char *SpringPalette::CheckPalette()
@@ -39,7 +44,7 @@ SpringPalette::~SpringPalette()
     delete (greenRgb);
     delete (blueRgb);
     delete (purpleRgb);
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < GetPaletteListLength(); i++)
     {
         delete[] paletteList[i];
     }

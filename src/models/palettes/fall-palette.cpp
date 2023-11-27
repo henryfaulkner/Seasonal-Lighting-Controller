@@ -11,7 +11,7 @@ FallPalette::FallPalette()
     pumpkinRgb = hexToRgb.ConvertHexToRGBArray(0xDB7C26);
     burntOrangeRgb = hexToRgb.ConvertHexToRGBArray(0xD8572A);
     deepOrangeRgb = hexToRgb.ConvertHexToRGBArray(0xC32F27);
-    paletteList = new int *[5];
+    paletteList = new int *[GetPaletteListLength()];
     paletteList[0] = deepRedRgb;
     paletteList[1] = yellowRgb;
     paletteList[2] = pumpkinRgb;
@@ -24,6 +24,11 @@ FallPalette::FallPalette()
 int **FallPalette::GetPaletteList()
 {
     return paletteList;
+}
+
+int FallPalette::GetPaletteListLength()
+{
+    return 5;
 }
 
 const char *FallPalette::CheckPalette()
@@ -39,7 +44,7 @@ FallPalette::~FallPalette()
     delete (pumpkinRgb);
     delete (burntOrangeRgb);
     delete (deepOrangeRgb);
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < GetPaletteListLength(); i++)
     {
         delete[] paletteList[i];
     }

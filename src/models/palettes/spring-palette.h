@@ -16,6 +16,7 @@ public:
 
     SpringPalette();
     int **GetPaletteList() override;
+    int GetPaletteListLength() override;
     const char *CheckPalette() override;
     ~SpringPalette();
 };

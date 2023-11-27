@@ -6,31 +6,20 @@
 #include "./palettes/christmas-palette.h"
 #include <Arduino.h>
 
-RTC_DS3231 RTC;
 DateHelper dateHelper;
 
 PaletteFactory::PaletteFactory() {}
 
-Palette *PaletteFactory::ConstructSeasonalPalette()
+Palette *PaletteFactory::ConstructSeasonalPalette(DateTime now)
 {
-    if (!RTC.begin())
-    {
-        Serial.println("Couldn't find RTC");
-        while (1)
-            ;
-    }
-
-    if (RTC.lostPower())
-    {
-        Serial.println("RTC lost power, let's set the time!");
-        RTC.adjust(DateTime(F(__DATE__), F(__TIME__)));
-    }
-
-    DateTime now = RTC.now();
     Serial.println("month");
     Serial.println(now.month());
     Serial.println("day");
     Serial.println(now.day());
+    Serial.println("hour");
+    Serial.println(now.hour());
+    Serial.println("minute");
+    Serial.println(now.minute());
 
     Palette *result = nullptr;
     if (IsSpring(now))

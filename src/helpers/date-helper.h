@@ -1,5 +1,3 @@
-#include "RTClib.h"
-
 #ifndef DATE_HELPER_H
 #define DATE_HELPER_H
 

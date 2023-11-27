@@ -6,18 +6,30 @@ ChristmasPalette::ChristmasPalette()
 {
     Serial.println("ChristmasPalette Constructor Start");
     // https://coolors.co/palette/bb010b-cd1624-006f57-23856d-faf8f8
-    deepRedRgb = hexToRgb.ConvertHexToRGBArray(0xBB010B);
+    deepRedRgb = hexToRgb.ConvertHexToRGBArray(0xFF0000);
     dullRedRgb = hexToRgb.ConvertHexToRGBArray(0xCD1624);
-    deepGreenRgb = hexToRgb.ConvertHexToRGBArray(0x006F57);
+    deepGreenRgb = hexToRgb.ConvertHexToRGBArray(0x00FF00);
     dullGreenRgb = hexToRgb.ConvertHexToRGBArray(0x23856D);
     snowWhiteRgb = hexToRgb.ConvertHexToRGBArray(0xFAF8F8);
-    paletteList = new int *[5];
+    paletteList = new int *[GetPaletteListLength()];
     paletteList[0] = deepRedRgb;
-    paletteList[1] = dullRedRgb;
-    paletteList[2] = deepGreenRgb;
-    paletteList[3] = dullGreenRgb;
-    paletteList[4] = snowWhiteRgb;
+    paletteList[1] = deepGreenRgb;
+    paletteList[3] = dullRedRgb;
+    paletteList[4] = dullGreenRgb;
+    paletteList[2] = snowWhiteRgb;
+    paletteList[5] = snowWhiteRgb;
     Serial.println("ChristmasPalette Constructor End");
+
+    for (int i = 0; i < GetPaletteListLength(); i++)
+    {
+        Serial.print("Rgb(");
+        Serial.print(paletteList[i][0]);
+        Serial.print(", ");
+        Serial.print(paletteList[i][1]);
+        Serial.print(", ");
+        Serial.print(paletteList[i][2]);
+        Serial.println(")");
+    }
     return;
 }
 
@@ -26,10 +38,30 @@ int **ChristmasPalette::GetPaletteList()
     return paletteList;
 }
 
+int ChristmasPalette::GetPaletteListLength()
+{
+    return 6;
+}
+
 const char *ChristmasPalette::CheckPalette()
 {
     Serial.println("Christmas Palette");
     return "Christmas";
+}
+
+void ChristmasPalette::CheckPaletteListRgb()
+{
+    int len = sizeof(paletteList);
+    for (int i = 0; i < len; i++)
+    {
+        Serial.print("Rgb(");
+        Serial.print(paletteList[i][0]);
+        Serial.print(", ");
+        Serial.print(paletteList[i][1]);
+        Serial.print(", ");
+        Serial.print(paletteList[i][2]);
+        Serial.println(")");
+    }
 }
 
 ChristmasPalette::~ChristmasPalette()
@@ -39,7 +71,7 @@ ChristmasPalette::~ChristmasPalette()
     delete (deepGreenRgb);
     delete (dullGreenRgb);
     delete (snowWhiteRgb);
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < GetPaletteListLength(); i++)
     {
         delete[] paletteList[i];
     }

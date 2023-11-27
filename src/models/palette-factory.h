@@ -8,7 +8,7 @@ class PaletteFactory
 {
 public:
     PaletteFactory();
-    Palette *ConstructSeasonalPalette();
+    Palette *ConstructSeasonalPalette(DateTime now);
     bool IsSpring(DateTime now);
     bool IsFall(DateTime now);
     bool IsWinter(DateTime now);
