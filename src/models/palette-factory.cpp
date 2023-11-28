@@ -30,7 +30,7 @@ Palette *PaletteFactory::ConstructSeasonalPalette(DateTime now)
     else if (IsFall(now))
     {
         Serial.println("IsFall");
-        result = new FallPalette();
+        result = new ChristmasPalette();
     }
     else if (IsChristmas(now))
     {

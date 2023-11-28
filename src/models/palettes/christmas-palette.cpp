@@ -7,16 +7,16 @@ ChristmasPalette::ChristmasPalette()
     Serial.println("ChristmasPalette Constructor Start");
     // https://coolors.co/palette/bb010b-cd1624-006f57-23856d-faf8f8
     deepRedRgb = hexToRgb.ConvertHexToRGBArray(0xFF0000);
-    dullRedRgb = hexToRgb.ConvertHexToRGBArray(0xCD1624);
+    dullRedRgb = hexToRgb.ConvertHexToRGBArray(0xDE1624);
     deepGreenRgb = hexToRgb.ConvertHexToRGBArray(0x00FF00);
-    dullGreenRgb = hexToRgb.ConvertHexToRGBArray(0x23856D);
+    dullGreenRgb = hexToRgb.ConvertHexToRGBArray(0x1DFF00);
     snowWhiteRgb = hexToRgb.ConvertHexToRGBArray(0xFAF8F8);
     paletteList = new int *[GetPaletteListLength()];
     paletteList[0] = deepRedRgb;
     paletteList[1] = deepGreenRgb;
+    paletteList[2] = snowWhiteRgb;
     paletteList[3] = dullRedRgb;
     paletteList[4] = dullGreenRgb;
-    paletteList[2] = snowWhiteRgb;
     paletteList[5] = snowWhiteRgb;
     Serial.println("ChristmasPalette Constructor End");
 
