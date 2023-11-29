@@ -2,6 +2,7 @@
 #include <Adafruit_NeoPixel.h>
 #include "models/palette.h"
 #include "models/palette-factory.h"
+#include "helpers/rainbox-spin.h"
 
 #define LED_PIN 6
 #define LED_COUNT 50
@@ -52,20 +53,22 @@ void setup()
 
 void loop()
 {
-  int len = currentPalette->GetPaletteListLength();
-  for (int i = 0; i < LED_COUNT; i++)
+  if (RTC.now().minute() > 5)
   {
-    strip.setPixelColor(i, strip.Color(currentPalette->GetPaletteList()[pixelIndexArr[i]][0], currentPalette->GetPaletteList()[pixelIndexArr[i]][1], currentPalette->GetPaletteList()[pixelIndexArr[i]][2]));
-    strip.show();
-    pixelIndexArr[i] = (pixelIndexArr[i] + 1) % len;
-  }
-  if (RTC.now().minute() < 5)
-  {
-    delay(50);
+    int len = currentPalette->GetPaletteListLength();
+    for (int i = 0; i < LED_COUNT; i++)
+    {
+      strip.setPixelColor(i, strip.Color(currentPalette->GetPaletteList()[pixelIndexArr[i]][0], currentPalette->GetPaletteList()[pixelIndexArr[i]][1], currentPalette->GetPaletteList()[pixelIndexArr[i]][2]));
+      strip.show();
+      pixelIndexArr[i] = (pixelIndexArr[i] + 1) % len;
+    }
+    delay(2000);
   }
   else
   {
-    delay(2000);
+    RainbowSpin rs;
+    rs.Rainbow(strip, LED_COUNT);
+    delay(50);
   }
 
   return;
