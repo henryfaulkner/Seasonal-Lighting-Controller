@@ -10,6 +10,7 @@ Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 Palette *currentPalette = nullptr;
 int *pixelIndexArr;
 RTC_DS3231 RTC;
+int rainbowOffset = 0;
 
 void setup()
 {
@@ -58,7 +59,8 @@ void loop()
     int len = currentPalette->GetPaletteListLength();
     for (int i = 0; i < LED_COUNT; i++)
     {
-      strip.setPixelColor(i, strip.Color(currentPalette->GetPaletteList()[pixelIndexArr[i]][0], currentPalette->GetPaletteList()[pixelIndexArr[i]][1], currentPalette->GetPaletteList()[pixelIndexArr[i]][2]));
+      // my pixel strip is GRB
+      strip.setPixelColor(i, strip.Color(currentPalette->GetPaletteList()[pixelIndexArr[i]][1], currentPalette->GetPaletteList()[pixelIndexArr[i]][0], currentPalette->GetPaletteList()[pixelIndexArr[i]][2]));
       strip.show();
       pixelIndexArr[i] = (pixelIndexArr[i] + 1) % len;
     }
@@ -67,7 +69,8 @@ void loop()
   else
   {
     RainbowSpin rs;
-    rs.Rainbow(strip, LED_COUNT);
+    rs.Rainbow(strip, LED_COUNT, rainbowOffset);
+    rainbowOffset = rainbowOffset + 1;
     delay(50);
   }
 

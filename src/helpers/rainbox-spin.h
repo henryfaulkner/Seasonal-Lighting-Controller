@@ -7,19 +7,18 @@
 class RainbowSpin
 {
 public:
-    void Rainbow(Adafruit_NeoPixel strip, int ledCount)
+    void Rainbow(Adafruit_NeoPixel &strip, int ledCount, int rainbowOffset)
     {
         Serial.println("method::Rainbow");
         for (int i = 0; i < ledCount; i++)
         {
-            int pixel_index = (floor((i * 256) / ledCount));
+            int pixel_index = (floor(((i + rainbowOffset) * 256) / ledCount));
             strip.setPixelColor(i, Wheel(strip, pixel_index & 255));
             strip.show();
-            delay(10);
         }
     }
 
-    uint32_t Wheel(Adafruit_NeoPixel strip, int pos)
+    uint32_t Wheel(Adafruit_NeoPixel &strip, int pos)
     {
         int r;
         int g;
@@ -54,4 +53,4 @@ public:
     }
 };
 
-#endif RAINBOW_SPIN_H
+#endif
